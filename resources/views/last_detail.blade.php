@@ -143,4 +143,5 @@
     <input type="hidden" id="commenttable" value="{{@$commentTable}}">
     <input type="hidden" id="module" value="{{@$module}}">
     <input type="hidden" id="feed_id" value="{{@$results->id}}">
+    <input type="hidden" id="type_name" value="{{@$results->getUserFirstLast->type}}">
 @stop

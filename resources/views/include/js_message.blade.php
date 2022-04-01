@@ -1,6 +1,6 @@
 <script>
-    var SITE_URL = "{{url('')}}";    
-    var TIME_ZONE = "{{env('TIME_ZONE')}}";
+    var SITE_URL = "{{ url('') }}";
+    var TIME_ZONE = "{{ env('TIME_ZONE') }}";
     var csrf_error = "{{ __('custom.csrf_error') }}";
     var js_required = "{{ __('custom.js_required') }}";
     var js_email = "{{ __('custom.js_email') }}";

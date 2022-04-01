@@ -20,8 +20,8 @@ class CreateUserFamilyTreesTable extends Migration
             $table->string('image',200)->nullable();
             $table->string('name',200);
             $table->string('email',200)->nullable();
-            $table->string('age',10);
-            $table->enum('gender', ['male', 'female']);
+            $table->string('age',10)->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('phone_number',20)->nullable();
             $table->boolean('is_alive')->default(0)->comment('1=dead and 0=alive');
             $table->tinyInteger('relationship');

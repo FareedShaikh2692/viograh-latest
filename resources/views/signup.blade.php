@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', @$title)
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @include("include.auth_header")
 <div class="container_400">
     <a href="{{route('registers')}}" title="VIOGRAF" class="logo">
@@ -28,7 +28,7 @@
     </div>
     <span class="line">or</span>
     <form method="post" id="{{$frn_id}}" action="{{$action}}" method="post" >
-    {{ csrf_field() }}    
+        {{ csrf_field() }}
     <div class="text_area row">
         <div class="form-group commonform col-md-6">
             <label class="placeholdertext">First name</label>

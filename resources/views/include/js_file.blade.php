@@ -1,34 +1,33 @@
-
-    <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="{{ asset('js/manage/validate.min.js') }}"></script>
-    <script src="{{ asset('js/manage/moment.min.js') }}"></script>
-    <script src="{{ asset('js/manage/validate_init.js').'?v='.config('custom_config.css_js_version')  }}"></script>
-    @include("include.js_message")
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
+<script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ asset('js/manage/validate.min.js') }}"></script>
+<script src="{{ asset('js/manage/moment.min.js') }}"></script>
+<script src="{{ asset('js/manage/validate_init.js') . '?v=' . config('custom_config.css_js_version') }}"></script>
+@include('include.js_message')
+<script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+    $(document).on('ready', function() {
+        $(".education-imgs-lider").show();
+        $(".education-imgs-lider").slick({
+            dots: false,
+            pauseOnHover: false,
+            infinite: true,
+            arrows: true,
+            slidesToShow: 1,
+            fade: true,
+            cssEase: 'linear',
+            autoplay: false,
+            speed: 100,
+            autoplaySpeed: 1000,
+            slidesToScroll: 1
         });
-        $(document).on('ready', function () {
-            $(".education-imgs-lider").show();
-            $(".education-imgs-lider").slick({
-                dots: false,
-                pauseOnHover: false,
-                infinite: true,
-                arrows: true,
-                slidesToShow: 1,
-                fade: true,
-                cssEase: 'linear',
-                autoplay: false,
-                speed: 100,
-                autoplaySpeed: 1000,
-                slidesToScroll: 1
-            });
-        });
-        $(document).ready(function () {
+    });
+    $(document).ready(function() {
 
             $("#startdate").datepicker({
                 dateFormat: "dd-M-yy",

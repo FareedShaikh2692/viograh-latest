@@ -30,6 +30,8 @@ class AjaxCommentController extends Controller
 
         $feed_id = $request->id;
         
+        $type_name = $request->type_name;
+
         $name = config('custom_config.tableType');
 
         $commenttbl = $name[$request->type];
@@ -84,6 +86,8 @@ class AjaxCommentController extends Controller
 
         $commenttbl = $name[$request->type];
 
+        $type_name = $request->type_name;
+       
         $userId = Auth::user()->id;
 
         $cmtId = DB::table($commenttbl)->insertGetId(
@@ -136,7 +140,7 @@ class AjaxCommentController extends Controller
                 'user_id' => $userfeed->user_id,
                 'from_id' => Auth::user()->id,
                 'unique_id' => $userfeed->id,
-                'message' => 'Commented on your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' Post.',
+                'message' => ($type_name == 'first') ? 'Commented your First post.' : (($type_name == 'last') ? 'Commented on your Last post.' : 'Commented on your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' post.'),
                 'type_id' => $userfeed->type_id, 
                 'type' =>'comment',
                 'is_read' => 0,
@@ -150,7 +154,7 @@ class AjaxCommentController extends Controller
                     'subject' => Auth::user()->first_name .' '. Auth::user()->last_name .' commented on your post',
                     'user_name' => $userfeed->getUser->first_name.' '.$userfeed->getUser->last_name,
                     'user_email' => $userfeed->getUser->email,
-                    'sentence' => Auth::user()->first_name .' '. Auth::user()->last_name .' Commented on your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' Post',
+                    'sentence' =>  ($type_name == 'first') ? Auth::user()->first_name .' '. Auth::user()->last_name.' Commented your First post.' : (($type_name == 'last') ? Auth::user()->first_name .' '. Auth::user()->last_name .' Commented on your Last post.' : Auth::user()->first_name .' '. Auth::user()->last_name .' Commented on your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' post.'),
                     'post_url' => strtolower('/'.$request->module.'/information/'.$feed_id),
                 );
                 Common_function::addnotification($mail_data);
@@ -166,7 +170,7 @@ class AjaxCommentController extends Controller
         $db_pre = DB::getTablePrefix();
 
         $feed_id = $request->id;
-        
+
         $name = config('custom_config.tableType');
 
         $commenttbl = $name[$request->type];

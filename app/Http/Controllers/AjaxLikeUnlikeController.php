@@ -84,19 +84,20 @@ class AjaxLikeUnlikeController extends Controller
                 'from_id' => Auth::user()->id,
                 'unique_id' => $userfeed->id,
                 'type' => 'like',
-                'message' => ' Liked your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' Post.',
+                'message' => ($type_name == 'first') ? 'Liked your First post.' : (($type_name == 'last') ? 'Liked your Last post.' : 'Liked your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' post.'),
                 'type_id' => $userfeed->type_id,
                 'is_read' => 0,
                 'created_at' => Carbon::now(),
                 'created_ip' => ip2long(\Request::ip()),
             );
             UserNotification::create($data);
+          
             if($userfeed->getUser->email_notification == 1){
                 $mail_data = array(
                     'subject' => Auth::user()->first_name .' '. Auth::user()->last_name .' liked your post',
                     'user_name' => $userfeed->getUser->first_name.' '.$userfeed->getUser->last_name,
                     'user_email' => $userfeed->getUser->email,
-                    'sentence' => Auth::user()->first_name .' '. Auth::user()->last_name.' Liked your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' Post. Please check post using below button                ',
+                    'sentence' =>($type_name == 'first') ? Auth::user()->first_name .' '. Auth::user()->last_name. 'Liked your First post. Please check post using below button' : (($type_name == 'last') ? Auth::user()->first_name .' '. Auth::user()->last_name.'Liked your Last post. Please check post using below button' : Auth::user()->first_name .' '. Auth::user()->last_name.'Liked your '.config('custom_config.user_feed_type_name')[$userfeed->type_id].' Post. Please check post using below button'),
                     'post_url' => '/'.$request->module.'/information/'.$feed_id,
                 );
                 Common_function::addnotification($mail_data);

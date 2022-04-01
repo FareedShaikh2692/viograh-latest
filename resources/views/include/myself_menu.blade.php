@@ -1,5 +1,5 @@
-<?php 
-$page_name =  basename($_SERVER['PHP_SELF']);
+<?php
+$page_name = basename($_SERVER['PHP_SELF']);
 ?>
 <div class="title_btn_row">
      <ul class="tabrow">

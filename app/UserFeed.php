@@ -72,6 +72,9 @@ class UserFeed extends Model
     public function getUserExperienceComment(){
         return $this->hasMany('App\UserExperienceComment','feed_id','id')->orderBy('id','DESC')->limit(3);
     }
+    public function getUserFirstLast(){
+        return $this->hasOne('App\UserFirstLast','feed_id','id');
+    }
     public function getUserFirst(){
         return $this->hasOne('App\UserFirstLast','feed_id','id')->where('type','=','first');
     }
