@@ -1,0 +1,435 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 Mar, 2014, 10:56:05 AM
+    Author     : poornendra
+*/
+.form-group.form_box.memfield.abs.col-md-12.has-error {
+    margin-bottom: 45px;
+}
+.addbtn{
+    background:#E31C79;color:white;border-radius:5px;
+}
+.alert{
+    width: 100%;
+}
+.modal-ttl{
+    border-bottom: 1px solid #e2e2e2 !important;
+}
+.addmember{
+    color: green;
+    background-color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: 1px solid green;
+}
+.removemember{
+    color: red;
+    background-color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid red;
+}
+.editmember{
+    color: slategrey;
+    background-color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid slategrey;
+}
+.add-member{
+    border-bottom: 1px solid #e2e2e2;
+}
+.add-member-form{
+    height: 50px !important;
+    border-radius: 10px !important;
+    border: 1px solid #DDDDDD !important;
+    font-size: 17px !important;
+    color: #222222 !important;
+    padding: 10px 15px !important;
+}
+.control-label{
+    margin-bottom: 5px !important;
+    font-size: 15px !important;
+    color: #454646 !important;
+}
+.name{
+    display: block;
+    font-size: 13px;
+    margin: 5px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+    white-space: nowrap;
+    font-weight: 500;
+}
+.relation {
+    display: block;
+    font-size: 12px;
+    margin: 5px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #8A8A8A;
+}
+#pk-memberForm {
+    /* background: none repeat scroll 0 0 #FFFFFF;
+    left: 17%;
+    padding: 60px 20px 20px;
+    position: relative;
+    top: 14%;
+    width: 461px;
+    height: 480px;
+    border-radius: 10px;
+    box-shadow: 0 0 23px #4c4b4b; */
+    display: none;
+}
+/* #pk-member-details {
+    background: url("images/back.png") repeat;;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index:1000;
+    display:none;
+}
+#pk-member-details table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    left: 34%;
+    padding: 30px;
+    position: relative;
+    top: 23%;
+    width: 461px;
+    box-shadow: 0 0 23px #4C4B4B;
+}
+#pk-member-details img{
+    height: 114px;
+} */
+/* .savebutton{
+    width: 100%;
+    border-radius: 8px;
+    background: #E31C79;
+    border: 0px solid #E31C79;
+    color: #fff;
+    -webkit-box-shadow: 0 3px 13px 0 #00000020 !important;
+    box-shadow: 0 3px 13px 0 #00000020 !important;
+    font-weight: 600;
+    padding: 15px;
+    -webkit-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+} */
+/* #pk-memberForm .table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    width: 90% !important;
+    position: absolute;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+#pk-memberForm .table td{
+    padding: 15px;
+} */
+#treeGround{
+    width: 100%;
+}
+.pk-cross{
+    left: 90%;
+    top: 5%;
+    padding-left: 0px;
+    padding: 0px 6px;
+    position: absolute;
+    z-index: 10000;
+    border-radius: 50px;
+    border: 1px solid grey;
+}
+.member {
+    height: 107px;
+    overflow: hidden;
+    width: 113px;
+    border: 1px solid #969696;
+    position: absolute;
+}
+.help-block{
+    text-align: initial !important;
+}
+.family-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+.select2-container{
+    z-index: 9999999 ;
+}
+.add-member-popup .abs .help-block{/* position: absolute;bottom:-20px;left: 15px; */}
+#pk-family-tree{
+    min-width: 100%;
+    margin-bottom: 30px;
+    width: max-content;
+
+}
+.frmlabel{
+    text-align: initial !important;
+}
+/*copied code 
+Now the CSS*/
+* {margin: 0; padding: 0;}
+
+.tree-ground ul {
+    padding-top: 20px;
+    padding-left: 4px;
+    position: relative;
+    display: flex;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    justify-content: center;
+}
+
+.tree-ground li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 19px 0px 15px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+#pk-popmenu {
+    padding: 0;
+    width: 148px;
+    display:none;
+    position: absolute;
+    z-index: 1;
+}
+
+#pk-popmenu ul {
+    list-style: none outside none;
+    padding: 7px;
+    width: 136px;
+    border-color: #C4C4C4;
+    border-image: none;
+    border-right: 1px solid #C4C4C4;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    padding: 0px;
+    padding-left: 0;
+    width: 136px;
+}
+
+#pk-popmenu ul li{
+    font-family: arial, verdana, tahoma;
+}
+#pk-popmenu ul li{
+    border-top: 1px solid #C4C4C4;
+    padding: 4px 0 4px 10px;
+    background: #DDDDDD;
+    color:#333333;
+    font-size: 13px;
+
+}
+#pk-popmenu ul li:hover{
+    background: #ACACAC;
+}
+center{
+    margin:-2px;
+}
+.modal{z-index: 99999 !important;}
+/* .spouse:before {
+    border-top: 2px solid #c1c1c1;
+    content: "";
+    display: block;
+    left: -34px;
+    position: relative;
+    top: 149px;
+    width: 35px;
+    margin-top: -2px;
+} */
+.spouse::after {
+    content: "";
+    display: block;
+    left: -39px;
+    position: absolute;
+    top: 60px;
+    width: 38px;
+    height: 2px;
+    margin-top: -2px;
+    background: #c1c1c1;
+}
+.spouse{
+    margin-left:35px;
+}
+/*
+ below css are from http://thecodeplayer.com/walkthrough/css3-family-tree
+*/
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree-ground li::before, .tree-ground li::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50% !important;
+    border-top: 2px solid #c1c1c1;
+    width: 51%;
+    max-width: 100%;
+    height: 80px;
+    margin-left: -2px;
+}
+.tree-ground li::after{
+    right: auto;
+    left: 50%;
+    border-left: 2px solid #c1c1c1;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree-ground li:only-child::after, .tree-ground li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree-ground li:only-child{padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree-ground li:first-child::before, .tree-ground li:last-child::after{
+    border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree-ground li:last-child::before{
+    border-right: 2px solid #c1c1c1;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.tree-ground li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+.family-tree-footer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+/*Time to add downward connectors from parents*/
+.tree-ground ul ul::before{
+    content: '';
+    position: absolute;
+    top: -72px;
+    left: 50%;
+    border-left: 2px solid #c1c1c1;
+    width: 0;
+    height: 152px;
+}
+.tree-ground ul ul.multi-child::before{
+    content: '';
+    position: absolute;
+    top: -72px;
+    left: 50%;
+    border-left: 2px solid #c1c1c1;
+    width: 0;
+    height: 92px;
+}
+.spousey::before {
+    height: 80px !important;
+}
+.tree-ground li a{
+    padding: 11px;
+    position: relative;
+    text-decoration: none;
+    color: #666;
+    border: 2px solid #c1c1c1;
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    width: 120px;
+    border-radius: 6px;
+    z-index: 1;
+    background-color: white;
+}
+.tree-ground li a:hover{
+    z-index: 1;
+    background-color: #ececec;
+}
+@media (max-width: 575px){
+    .modal-content {
+        width: 80% !important;
+        margin: auto;
+    }
+}
+@media (max-width: 360px){
+    .modal-content {
+        width: 100% !important;
+        margin: auto;
+    }
+}
+input[type="email"] {
+    text-transform: lowercase;
+}
+.memform {
+    margin-bottom: 0px !important; position: relative;
+}
+.memfield{
+    margin-bottom: 1rem; position: relative;
+}
+.abs{
+    margin-bottom: 25px;
+}
+.actions{
+    position: absolute;
+    width: 100%;
+    display: none;
+    background-color: #fff;
+    padding: 3px 3px;
+    bottom: -1px;
+    margin: 1% 0%;
+    left: 0;
+    border-radius: 0px 0px 4px 4px;
+    border-top: 1px solid #ccc;
+}
+.modal-open .select2.select2-container.select2-container--default.select2-container--open{width:100% !important;}
+
+.modal-open .select2-container.select2-container--default.select2-container--open{width: auto !important;}
+
+
+#my_self{
+    border-color: #1490e8;
+    background-color: #f1f9ff;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+/* .tree-ground li a:hover, .tree-ground li a:hover+ul li a {
+    background: #c8e4f8; color: #000; border: 2px solid #c1c1c1;
+} */
+/*Connector styles on hover*/
+/* .tree-ground li a:hover
+.tree-ground li a:hover+ul li::after, 
+.tree-ground li a:hover+ul li::before, 
+.tree-ground li a:hover+ul::before, 
+.tree-ground li a:hover+ul ul::before{
+    border-color:  #f3eeeb;
+} */
+
+/*Thats all. I hope you enjoyed it.
+Thanks :)*/
